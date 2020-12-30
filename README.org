@@ -27,13 +27,13 @@ Just call =org-super-links-peek-link= with the point on a link and see a preview
 
 Only two settings:
 
-** org-super-links-peek-show-lines
+*** org-super-links-peek-show-lines
 
 Controls how many lines to show in the preview.
 
 Default =10=
 
-** org-super-links-peek-show-drawers
+*** org-super-links-peek-show-drawers
 
 If non-nil include drawers in the preview. If nil don't show them.
 
@@ -44,4 +44,5 @@ Default =nil=
 * Credits
 
 Thanks to @cpitclaudel for [[https://github.com/cpitclaudel/quick-peek][quick-peek]]
+
 Thanks to @alphapapa for [[https://github.com/alphapapa/org-quick-peek][org-quick-peek]]
