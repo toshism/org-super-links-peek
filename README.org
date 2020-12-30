@@ -1,0 +1,47 @@
+#+TITLE: org-super-links-peek
+
+Take a peek at the content on the other side of a link.
+
+A sort of auxiliary package for [[https://github.com/toshism/org-super-links][org-super-links]] to make the related links a little easier to use in some contexts. Put the point on a link, hit a key, see a brief summary of the target of the link right there.
+
+No screenshot, but look at the one on the [[https://github.com/cpitclaudel/quick-peek][quick-peek]] page. It's like that, only for org headings instead of functions.
+
+It's basically a rip-off of [[https://github.com/alphapapa/org-quick-peek][org-quick-peek]] only updated, and dumber (only works for links).
+
+* Install
+
+This is not on MELPA yet, so use [[https://github.com/quelpa/quelpa-use-package][quelpa-use-package]], [[https://github.com/raxod502/straight.el][straight]] or whatever your preference is.
+
+Something like this for quelpa:
+#+begin_src emacs-lisp
+(use-package org-super-links-peek
+  :quelpa (org-super-links-peek :repo "toshism/org-super-links-peek" :fetcher github)
+  :bind (("C-c s p" . org-super-links-peek-link)))
+#+end_src
+
+* Usage
+
+Just call =org-super-links-peek-link= with the point on a link and see a preview. Not much else to it really. I personally map it to =C-c s p= to fit in with my [[https://github.com/toshism/org-super-links][org-super-links]] bindings.
+
+* Config
+
+Only two settings:
+
+** org-super-links-peek-show-lines
+
+Controls how many lines to show in the preview.
+
+Default =10=
+
+** org-super-links-peek-show-drawers
+
+If non-nil include drawers in the preview. If nil don't show them.
+
+Default =nil=
+
+* Changelog
+
+* Credits
+
+Thanks to @cpitclaudel for [[https://github.com/cpitclaudel/quick-peek][quick-peek]]
+Thanks to @alphapapa for [[https://github.com/alphapapa/org-quick-peek][org-quick-peek]]
