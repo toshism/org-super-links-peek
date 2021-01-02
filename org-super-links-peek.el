@@ -73,15 +73,22 @@ many lines."
                                  "^[ \t]*:END:.*\n?" nil 'move)
                                 (point))))
         (setq text (buffer-substring (point-min) (point-max)))))
-    (when num-lines
+    (when (not (eq num-lines 'none))
       ;; Remove extra lines
       (with-temp-buffer
         (insert text)
         (goto-char (point-min))
-        (org-goto-line (1+ num-lines))
+	(while (org-super-links-peek-current-line-empty-p)
+	  (kill-whole-line))
+        (goto-line (1+ num-lines))
         (backward-char 1)
-        (setq text (buffer-substring (point-min) (point-max)))))
+	(setq text (buffer-substring (point-min) (point)))))
     text))
+
+(defun org-super-links-peek-current-line-empty-p ()
+  (save-excursion
+    (beginning-of-line)
+    (looking-at-p "[[:space:]]*$")))
 
 (defun org-super-links-peek-link ()
   "Show quick peek of Org heading linked at point."
@@ -94,7 +101,7 @@ many lines."
 	  (quick-peek-show (org-super-links-peek--get-entry-text target-marker
 								 org-super-links-peek-show-drawers
 								 org-super-links-peek-show-lines)
-			   (marker-position m)))))))
+			   (marker-position m) nil org-super-links-peek-show-lines))))))
 
 (provide 'org-super-links-peek)
 ;;; org-super-links-peek.el ends here
